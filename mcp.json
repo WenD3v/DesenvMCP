@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "McpDev": {
+      "command": "D:\\Projetos\\DesenvMCP\\venv\\scripts\\python.exe",
+      "args": [
+        "D:\\Projetos\\DesenvMCP\\start_mcps.py"
+      ]
+    }
+  }
+}
