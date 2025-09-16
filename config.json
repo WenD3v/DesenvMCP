@@ -8,21 +8,38 @@
       "path": "./mcp-orquestrador",
       "port": 8001,
       "role": "orchestrator",
-      "description": "Coordena análises e gera relatórios consolidados",
-      "dependencies": ["mcp-analise"]
+      "description": "Coordena análises e gera relatórios consolidados - Gateway MCP",
+      "dependencies": ["mcp-analise", "mcp-design"],
+      "gateway_mode": true,
+      "managed_services": ["mcp-analise", "mcp-design"]
     },
     "mcp-analise": {
       "path": "./mcp-analise",
       "port": 8002,
       "role": "analyzer",
       "description": "Realiza análises específicas de código",
-      "dependencies": []
+      "dependencies": [],
+      "tools": ["analisar_codigo", "detectar_problemas", "calcular_metricas"]
+    },
+    "mcp-design": {
+      "path": "./mcp-design",
+      "port": 8003,
+      "role": "designer",
+      "description": "Análise de design UI/UX e geração de templates",
+      "dependencies": [],
+      "tools": ["analisar_design_ui", "gerar_template", "listar_templates"]
     }
   },
   "communication": {
     "protocol": "stdio",
     "timeout": 30,
-    "retry_attempts": 3
+    "retry_attempts": 3,
+    "gateway": {
+      "enabled": true,
+      "route_prefix": "/mcp",
+      "service_discovery": true,
+      "load_balancing": false
+    }
   },
   "logging": {
     "level": "INFO",

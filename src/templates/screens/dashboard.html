@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #f8fafc;
+            color: #1f2937;
+        }
+        
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            padding: 24px;
+        }
+        
+        .sidebar-header {
+            margin-bottom: 32px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+        
+        .nav-menu {
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-bottom: 8px;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #6b7280;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+        
+        .main-content {
+            padding: 24px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .stat-change {
+            font-size: 0.875rem;
+            margin-top: 8px;
+        }
+        
+        .stat-change.positive {
+            color: #10b981;
+        }
+        
+        .stat-change.negative {
+            color: #ef4444;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+        
+        .chart-container,
+        .activity-feed {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: #eff6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .activity-time {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar" role="navigation" aria-label="Menu principal">
+            <div class="sidebar-header">
+                <div class="logo">Dashboard</div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link active" role="menuitem" aria-current="page">
+                            📊 Visão Geral
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link" role="menuitem">
+                            📈 Relatórios
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link" role="menuitem">
+                            👥 Usuários
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link" role="menuitem">
+                            ⚙️ Configurações
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main-content" role="main">
+            <header class="header">
+                <h1 class="page-title">Visão Geral</h1>
+            </header>
+            
+            <section class="stats-grid" aria-label="Estatísticas principais">
+                <div class="stat-card">
+                    <div class="stat-label">Usuários Ativos</div>
+                    <div class="stat-value">2,543</div>
+                    <div class="stat-change positive">+12% vs mês anterior</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Receita</div>
+                    <div class="stat-value">R$ 45.2k</div>
+                    <div class="stat-change positive">+8% vs mês anterior</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Conversões</div>
+                    <div class="stat-value">892</div>
+                    <div class="stat-change negative">-3% vs mês anterior</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Taxa de Rejeição</div>
+                    <div class="stat-value">24.5%</div>
+                    <div class="stat-change positive">-5% vs mês anterior</div>
+                </div>
+            </section>
+            
+            <div class="content-grid">
+                <section class="chart-container" aria-label="Gráfico de desempenho">
+                    <h2 class="section-title">Desempenho Mensal</h2>
+                    <div style="height: 300px; background: #f8fafc; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6b7280;">
+                        [Gráfico seria inserido aqui]
+                    </div>
+                </section>
+                
+                <section class="activity-feed" aria-label="Atividades recentes">
+                    <h2 class="section-title">Atividades Recentes</h2>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Novo usuário registrado</div>
+                            <div class="activity-time">2 minutos atrás</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">💰</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Pagamento processado</div>
+                            <div class="activity-time">15 minutos atrás</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">📊</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Relatório gerado</div>
+                            <div class="activity-time">1 hora atrás</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

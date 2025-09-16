@@ -1,10 +1,13 @@
 {
   "mcpServers": {
-    "McpDev": {
+    "MCP-Orquestrador": {
       "command": "D:\\Projetos\\DesenvMCP\\venv\\scripts\\python.exe",
       "args": [
-        "D:\\Projetos\\DesenvMCP\\start_mcps.py"
-      ]
+        "D:\\Projetos\\DesenvMCP\\mcp-orquestrador\\app.py"
+      ],
+      "env": {
+        "PYTHONPATH": "D:\\Projetos\\DesenvMCP"
+      }
     }
   }
 }

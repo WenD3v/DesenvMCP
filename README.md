@@ -5,10 +5,11 @@ Este é um sistema MCP (Model Context Protocol) modular especializado em anális
 ## 🏗️ Arquitetura
 
 ### Estrutura Modular
-O sistema é composto por dois MCPs especializados:
+O sistema é composto por MCPs especializados:
 
 - **MCP Orquestrador**: Coordena análises e gera relatórios consolidados
-- **MCP Análise**: Realiza análises específicas de código
+- **MCP Design UI/UX**: Especializado em design de interfaces e experiência do usuário
+- **MCP Análise**: Realiza análises específicas de código (legado)
 
 ### Benefícios da Arquitetura
 - ✅ **Separação de Responsabilidades**: Cada MCP tem uma função específica
@@ -31,6 +32,15 @@ O sistema é composto por dois MCPs especializados:
 - **Métricas de Código**: Complexidade, densidade de comentários
 - **Sugestões de Melhoria**: Recomendações específicas por linguagem
 - **Verificação de Padrões**: Conformidade com padrões (PEP 8, ES6+)
+
+### MCP Design UI/UX
+- **Análise de Interfaces**: HTML/CSS/JS e frameworks modernos
+- **Verificação de Acessibilidade**: Conformidade com WCAG 2.1
+- **Sugestões de UX**: Personalizadas por público-alvo
+- **Geração de Guias de Estilo**: Padrões visuais consistentes
+- **Templates de Referência**: Acesso a bibliotecas de componentes
+- **Melhores Práticas**: Design patterns e usabilidade
+- **Suporte Multi-Framework**: React, Vue, Svelte, Angular
 
 ## 📦 Como Usar
 

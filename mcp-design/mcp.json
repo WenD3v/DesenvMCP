@@ -1,0 +1,55 @@
+{
+  "name": "MCP Design UI/UX",
+  "version": "1.0.0",
+  "description": "MCP especializado em design de interfaces e experiência do usuário, com suporte a React Native, acesso a templates e melhores práticas de UI/UX",
+  "author": "Desenvolvedor MCP",
+  "license": "MIT",
+  "main": "app.py",
+  "capabilities": {
+    "tools": [
+      {
+        "name": "analisar_design_ui",
+        "description": "Analisa código HTML/CSS/JS e fornece sugestões baseadas em princípios de UI/UX"
+      },
+      {
+        "name": "sugerir_melhorias_ux",
+        "description": "Sugere melhorias de UX baseadas na descrição da interface e público-alvo"
+      },
+      {
+        "name": "gerar_guia_estilo",
+        "description": "Gera um guia de estilo completo para projetos"
+      }
+    ],
+    "resources": [
+      {
+        "name": "templates://screens",
+        "description": "Acesso aos templates de telas disponíveis em src/templates/screens/"
+      }
+    ]
+  },
+  "dependencies": {
+    "mcp": ">=0.1.0",
+    "pathlib": "*"
+  },
+  "configuration": {
+    "templates_directory": "src/templates/screens",
+    "supported_formats": [".html", ".jsx", ".tsx", ".vue", ".svelte"],
+    "design_principles": {
+      "accessibility": true,
+      "mobile_first": true,
+      "performance": true,
+      "usability": true
+    }
+  },
+  "features": [
+    "Análise de interfaces HTML, CSS, JavaScript, React, React Native, Vue.js e Svelte",
+    "Suporte completo a arquivos .jsx e .tsx",
+    "Análises específicas para React Native (StyleSheet, acessibilidade, UX móvel)",
+    "Análise de acessibilidade",
+    "Sugestões de UX personalizadas",
+    "Integração com templates existentes",
+    "Geração de guias de estilo",
+    "Melhores práticas de UI/UX",
+    "Suporte a múltiplos frameworks"
+  ]
+}

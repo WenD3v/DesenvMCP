@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário - Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #f8fafc;
+            padding: 24px;
+            line-height: 1.6;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .form-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .form-subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .form-content {
+            padding: 32px;
+        }
+        
+        .form-section {
+            margin-bottom: 32px;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 6px;
+            font-size: 0.875rem;
+        }
+        
+        .form-label.required::after {
+            content: ' *';
+            color: #ef4444;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: white;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-help {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checkbox-input,
+        .radio-input {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-end;
+            padding-top: 24px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            border-color: #d1d5db;
+        }
+        
+        .btn-secondary:hover {
+            background: #f9fafb;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            display: none;
+        }
+        
+        .form-input.error {
+            border-color: #ef4444;
+        }
+        
+        .form-input.error + .error-message {
+            display: block;
+        }
+        
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .form-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            body {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h1 class="form-title">Cadastro de Usuário</h1>
+            <p class="form-subtitle">Preencha os dados abaixo para criar sua conta</p>
+        </div>
+        
+        <div class="form-content">
+            <form class="user-form" role="form" aria-label="Formulário de cadastro">
+                <div class="form-section">
+                    <h2 class="section-title">Informações Pessoais</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label required">Nome</label>
+                            <input 
+                                type="text" 
+                                id="firstName" 
+                                name="firstName" 
+                                class="form-input" 
+                                required 
+                                aria-describedby="firstName-help firstName-error"
+                                placeholder="Seu nome"
+                            >
+                            <div class="form-help" id="firstName-help">Digite seu primeiro nome</div>
+                            <div class="error-message" id="firstName-error" role="alert">Nome é obrigatório</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lastName" class="form-label required">Sobrenome</label>
+                            <input 
+                                type="text" 
+                                id="lastName" 
+                                name="lastName" 
+                                class="form-input" 
+                                required 
+                                aria-describedby="lastName-error"
+                                placeholder="Seu sobrenome"
+                            >
+                            <div class="error-message" id="lastName-error" role="alert">Sobrenome é obrigatório</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email" class="form-label required">E-mail</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                required 
+                                aria-describedby="email-help email-error"
+                                placeholder="seu@email.com"
+                            >
+                            <div class="form-help" id="email-help">Usaremos este e-mail para contato</div>
+                            <div class="error-message" id="email-error" role="alert">E-mail válido é obrigatório</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Telefone</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="form-input" 
+                                aria-describedby="phone-help"
+                                placeholder="(11) 99999-9999"
+                            >
+                            <div class="form-help" id="phone-help">Opcional - formato: (11) 99999-9999</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Endereço</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cep" class="form-label">CEP</label>
+                            <input 
+                                type="text" 
+                                id="cep" 
+                                name="cep" 
+                                class="form-input" 
+                                aria-describedby="cep-help"
+                                placeholder="00000-000"
+                            >
+                            <div class="form-help" id="cep-help">Formato: 00000-000</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="city" class="form-label">Cidade</label>
+                            <input 
+                                type="text" 
+                                id="city" 
+                                name="city" 
+                                class="form-input" 
+                                placeholder="Sua cidade"
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="address" class="form-label">Endereço Completo</label>
+                        <input 
+                            type="text" 
+                            id="address" 
+                            name="address" 
+                            class="form-input" 
+                            placeholder="Rua, número, bairro"
+                        >
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Preferências</h2>
+                    
+                    <div class="form-group">
+                        <label for="interests" class="form-label">Área de Interesse</label>
+                        <select id="interests" name="interests" class="form-select" aria-describedby="interests-help">
+                            <option value="">Selecione uma opção</option>
+                            <option value="tech">Tecnologia</option>
+                            <option value="design">Design</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="business">Negócios</option>
+                        </select>
+                        <div class="form-help" id="interests-help">Escolha sua principal área de interesse</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Notificações</label>
+                        <div class="checkbox-group" role="group" aria-labelledby="notifications-label">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="emailNotif" name="notifications" value="email" class="checkbox-input">
+                                <label for="emailNotif">Receber notificações por e-mail</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="smsNotif" name="notifications" value="sms" class="checkbox-input">
+                                <label for="smsNotif">Receber notificações por SMS</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio" class="form-label">Sobre você</label>
+                        <textarea 
+                            id="bio" 
+                            name="bio" 
+                            class="form-textarea" 
+                            aria-describedby="bio-help"
+                            placeholder="Conte um pouco sobre você..."
+                        ></textarea>
+                        <div class="form-help" id="bio-help">Máximo 500 caracteres</div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" aria-label="Cancelar cadastro">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary" aria-label="Finalizar cadastro">
+                        Cadastrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
