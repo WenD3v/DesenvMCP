@@ -46,7 +46,28 @@ O sistema é composto por MCPs especializados:
 
 ### Pré-requisitos
 ```bash
-pip install mcp fastmcp
+py -m venv venv
+# com o venv ativado:
+pip install -r requirements.txt
+```
+
+### adicionar ao cursor ou trae
+
+```json
+// Altere as pastas de acordo com sua máquina.
+{
+  "mcpServers": {
+    "MCP-Orquestrador": {
+      "command": "D:\\Projetos\\DesenvMCP\\venv\\scripts\\python.exe",
+      "args": [
+        "D:\\Projetos\\DesenvMCP\\mcp-orquestrador\\app.py"
+      ],
+      "env": {
+        "PYTHONPATH": "D:\\Projetos\\DesenvMCP"
+      }
+    }
+  }
+}
 ```
 
 ### Gerenciamento de Serviços
@@ -103,10 +124,8 @@ DesenvMCP/
 ├── start_mcps.py              # Script de gerenciamento
 ├── config.json                # Configuração global
 ├── README.md                  # Documentação
-├── app.py                     # Servidor MCP original (legado)
-├── mcp.json                   # Configuração original (legado)
+├── trae mcp.json              # Configuração para cursor ou trae
 ├── venv/                      # Ambiente virtual Python
-└── __pycache__/               # Cache Python
 ```
 
 ## 🔧 Configuração
